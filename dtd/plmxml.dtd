@@ -1,0 +1,49 @@
+<!-- 
+	Document type definition for Siemens PLMXML
+	Extra-light version by aurelien.benel@utt.fr
+-->
+<!ELEMENT PLMXML (ProductDef)>
+<!ELEMENT ProductDef (InstanceGraph)>
+<!ATTLIST ProductDef 
+	id ID #REQUIRED
+>
+<!ELEMENT InstanceGraph (Instance|Part)*>
+<!ATTLIST InstanceGraph 
+	id ID #REQUIRED
+	rootRefs IDREFS #IMPLIED
+>
+<!ELEMENT Instance (Transform?)>
+<!ATTLIST Instance
+	id ID #REQUIRED
+	name CDATA #IMPLIED
+	partRef IDREF #IMPLIED
+>
+<!ELEMENT Part (Bound?, Occurrence?, Representation?)>
+<!ATTLIST Part
+	id ID #REQUIRED
+	name CDATA #IMPLIED
+	instanceRefs IDREFS #IMPLIED
+	type (solid|assembly) #IMPLIED
+>
+<!ELEMENT Bound EMPTY>
+<!ATTLIST Bound
+	id ID #REQUIRED
+	values CDATA #IMPLIED
+>
+<!ELEMENT Occurrence (Transform?)>
+<!ATTLIST Occurrence 
+	id ID #REQUIRED
+	instanceRefs IDREFS #IMPLIED
+	materialRef CDATA #IMPLIED
+>
+<!ELEMENT Representation EMPTY>
+<!ATTLIST Representation 
+	id ID #REQUIRED
+	format CDATA #IMPLIED
+	location CDATA #IMPLIED
+>
+<!ELEMENT Transform (#PCDATA)>
+<!ATTLIST Transform
+	id ID #REQUIRED
+>
+
