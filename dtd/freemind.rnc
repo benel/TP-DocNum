@@ -1,0 +1,26 @@
+# © Aurélien Bénel, 2008
+
+start = element map {
+	attribute version {text}?,
+	node*
+}
+
+node = element node {
+	attribute ID {xsd:ID}?,
+	attribute TEXT {text}?,
+	attribute CREATED {text}?,
+	attribute MODIFIED {text}?,
+	attribute POSITION {text}?,
+	(
+		node |
+		element arrowlink {
+			attribute DESTINATION {xsd:IDREF},
+			attribute COLOR {text}?,
+			attribute STARTARROW {text}?,
+			attribute ENDARROW {text}?,
+			attribute STARTINCLINATION {text}?,
+			attribute ENDINCLINATION {text}?,
+			attribute ID {text}?
+		}
+	)*
+}
